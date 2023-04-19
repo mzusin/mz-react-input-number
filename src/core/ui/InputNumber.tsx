@@ -1,7 +1,7 @@
-import React, { useState, useEffect, ChangeEvent, KeyboardEvent } from 'react';
+import { useState, useEffect, ChangeEvent, KeyboardEvent } from 'react';
 import { parseNumber } from '../domain/parse-provider';
-import {EUpdateType, IInputNumber} from '../interfaces';
-import {setDecimalPlaces} from "mz-math";
+import { EUpdateType, IInputNumber } from '../interfaces';
+import { setDecimalPlaces } from 'mz-math';
 
 export const InputNumber = (props: IInputNumber) => {
 
@@ -79,11 +79,14 @@ export const InputNumber = (props: IInputNumber) => {
      * Return up / down number or NaN.
      */
     const update = (updateType: EUpdateType) : number => {
-        console.log('updateType', updateType)
 
         const parsed = parseNumber(text);
 
         switch (updateType) {
+            case EUpdateType.NO_CHANGE: {
+                return isNaN(parsed) ? NaN : setDecimalPlaces(Math.min(getMax(), parsed), getDecimalPlaces());
+            }
+
             case EUpdateType.UP: {
                 return isNaN(parsed) ? NaN : setDecimalPlaces(Math.min(getMax(), parsed + getStep()), getDecimalPlaces());
             }

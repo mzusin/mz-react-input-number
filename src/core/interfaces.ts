@@ -9,6 +9,7 @@ export interface IInputNumber {
 }
 
 export enum EUpdateType {
-    UP = 0,
-    DOWN = 1,
+    NO_CHANGE = 0,
+    UP = 1,
+    DOWN = 2,
 }
