@@ -21,6 +21,6 @@ describe('Input Number', () => {
             key: 'ArrowDown',
         });
 
-        expect($input.value).toStrictEqual(2.19);
+        expect($input.value).toStrictEqual('10');
     });
 });

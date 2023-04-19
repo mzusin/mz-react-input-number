@@ -5,29 +5,43 @@ import { setDecimalPlaces } from 'mz-math';
 
 export const InputNumber = (props: IInputNumber) => {
 
-    const { min, max, step, value, onChange, onKeyDown, decimalPlaces } = props;
-
-    const [text, setText] = useState(value?.toString() || '');
-
-    useEffect(() => {
-        setText(value?.toString() || '');
-    }, [value]);
+    const {
+        min, max,
+        step, value,
+        onChange, onKeyDown,
+        decimalPlaces
+    } = props;
 
     const getMin = () => {
-        return min === undefined ? -Infinity : min;
+        const _min = parseNumber(min);
+        return isNaN(_min) ? -Infinity : _min;
     };
 
     const getMax = () => {
-        return max === undefined ? Infinity : max;
+        const _max = parseNumber(max);
+        return isNaN(_max) ? Infinity : _max;
     };
 
     const getStep = () => {
-        return step === undefined ? 1 : step;
+        const _step = parseNumber(step);
+        return isNaN(_step) ? 1 : _step;
     };
 
     const getDecimalPlaces = () => {
         return decimalPlaces === undefined ? 2 : decimalPlaces;
     };
+
+    const getInitialValue = (num?: string|number) => {
+        const parsed = parseNumber(num?.toString() || '');
+        const val = Math.min(Math.max(getMin(), parsed), getMax());
+        return isNaN(parsed) ? '' : setDecimalPlaces(val, getDecimalPlaces()).toString();
+    };
+
+    const [ text, setText ] = useState(getInitialValue(value));
+
+    useEffect(() => {
+        setText(getInitialValue(value));
+    }, [value]);
 
     const sendOnChangeEventToUser = (num: number) => {
         if(!isNaN(num) && !!onChange && typeof onChange === 'function'){

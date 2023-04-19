@@ -1,8 +1,8 @@
 export interface IInputNumber {
-    min?: number;
-    max?: number;
-    step?: number;
-    value?: number;
+    min?: number|string;
+    max?: number|string;
+    step?: number|string;
+    value?: number|string;
     onChange?: Function;
     onKeyDown?: Function;
     decimalPlaces?: number; // 2 by default
