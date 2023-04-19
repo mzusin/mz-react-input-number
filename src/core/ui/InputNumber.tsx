@@ -53,16 +53,17 @@ export const InputNumber = (props: IInputNumber) => {
      * Up / Down arrows.
      */
     const onKeyDownHandler = (evt: KeyboardEvent<HTMLInputElement>) => {
+
         switch(evt.key) {
-            case 'ArrowDown': {
-                const value = update(EUpdateType.DOWN);
+            case 'ArrowUp': {
+                const value = update(EUpdateType.UP);
                 setText(isNaN(value) ? '' : value.toString());
                 sendOnChangeEventToUser(value);
                 break;
             }
 
-            case 'ArrowUp': {
-                const value = update(EUpdateType.UP);
+            case 'ArrowDown': {
+                const value = update(EUpdateType.DOWN);
                 setText(isNaN(value) ? '' : value.toString());
                 sendOnChangeEventToUser(value);
                 break;
@@ -78,6 +79,7 @@ export const InputNumber = (props: IInputNumber) => {
      * Return up / down number or NaN.
      */
     const update = (updateType: EUpdateType) : number => {
+        console.log('updateType', updateType)
 
         const parsed = parseNumber(text);
 

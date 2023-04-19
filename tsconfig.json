@@ -1,22 +1,18 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "module": "es2015",
+    "module": "esnext",
     "moduleResolution": "node",
-
     "outDir": "./types",
     "allowJs": true,
-
     "isolatedModules": true,
     "esModuleInterop": true,
     "useDefineForClassFields": true,
     "forceConsistentCasingInFileNames": true,
     "importHelpers": true,
     "suppressImplicitAnyIndexErrors": true,
-
     "declaration": true,
     "declarationMap": false,
-
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
@@ -25,10 +21,20 @@
     "noFallthroughCasesInSwitch": true,
     "strictNullChecks": true,
     "strictBindCallApply": true,
-    "jsx": "react"
+    "jsx": "react-jsx",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "resolveJsonModule": true,
+    "noEmit": true
   },
   "include": [
-    "src",
+    "src"
   ],
   "exclude": [
     "types",
