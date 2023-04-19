@@ -1,0 +1,3 @@
+- mousewheel
+- page up / down arrows (jump to stat end?)
+- accessibility

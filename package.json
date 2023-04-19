@@ -1,0 +1,46 @@
+{
+  "name": "mz-react-input-number",
+  "version": "1.0.0",
+  "description": "React number input component",
+  "type": "module",
+  "types": "./dist/index.d.ts",
+  "main": "./dist/mz-react-input-number.min.js",
+  "exports": {
+    "import": "./dist/mz-react-input-number.esm.js",
+    "default": "./dist/mz-react-input-number.min.js"
+  },
+  "scripts": {
+    "browser:build": "node run/browser.js",
+    "browser:watch": "node run/browser.js -- watch",
+    "esm:build": "node run/esm.js",
+    "esm:watch": "node run/esm.js -- watch",
+    "example:build": "node run/example.js",
+    "example:watch": "node run/example.js -- watch",
+    "eslint": "eslint ./src/**",
+    "typescript-declarations": "tsc --emitDeclarationOnly"
+  },
+  "keywords": [
+    "number",
+    "input",
+    "number input"
+  ],
+  "author": "Miriam Zusin <miriam.zusin@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mzusin/mz-react-input-number"
+  },
+  "license": "MIT",
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "@types/react": "^18.0.37",
+    "@types/react-dom": "^18.0.11",
+    "esbuild": "^0.17.17",
+    "mz-math": "^3.0.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
