@@ -706,4 +706,31 @@ describe('Input Number', () => {
         });
     });
 
+    describe('Classes & Styles', () => {
+
+        test('Provided classes', () => {
+
+            const { container} = render(
+                <InputNumber inputClasses="class1 class2" />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            expect($input.classList.contains('class1') && $input.classList.contains('class2')).toStrictEqual(true);
+        });
+
+        test('Provided styles', () => {
+
+            const styles = {
+                color: 'red',
+            };
+
+            const { container} = render(
+                <InputNumber inputStyles={ styles } />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            expect($input.style.color).toStrictEqual('red');
+        });
+    });
+
 });

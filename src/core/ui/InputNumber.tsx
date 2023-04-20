@@ -11,7 +11,8 @@ export const InputNumber = (props: IInputNumber) => {
         min, max,
         step, value,
         onChange, onKeyDown,
-        decimalPlaces
+        decimalPlaces,
+        inputClasses, inputStyles
     } = props;
 
     // ------------------------ HELPERS -------------------------
@@ -142,6 +143,8 @@ export const InputNumber = (props: IInputNumber) => {
             onChange={ onChangeHandler }
             onKeyDown={ onKeyDownHandler }
             onBlur={ onBlurHandler }
+            className={ inputClasses }
+            style={ inputStyles }
         />
     )
 };
