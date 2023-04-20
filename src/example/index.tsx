@@ -14,10 +14,13 @@ const App = () => {
                 max={ 100 }
                 step={ 0.01 }
                 value={ num }
-                onChange={ setNum }
+                pattern="[0-9]*"
+                onChangeCallback={ setNum }
             />
 
-            <InputNumber />
+            <InputNumber
+                removeRegex={ /[^\-0-9.]*/ig }
+            />
         </>
     );
 };

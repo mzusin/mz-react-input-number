@@ -994,4 +994,6 @@ describe('Input Number', () => {
             expect($input.disabled).toStrictEqual(true);
         });
     });
+
+
 });

@@ -11,7 +11,7 @@ export const InputNumber = (props: IInputNumber) => {
         min, max,
         step, value,
         onChangeCallback, onKeyDownCallback,
-        decimalPlaces,
+        decimalPlaces, removeRegex,
         inputClasses, inputStyles
     } = props;
 
@@ -37,7 +37,12 @@ export const InputNumber = (props: IInputNumber) => {
     };
 
     const validate = (num?: string|number) => {
-        const parsed = parseNumber(num?.toString() || '');
+        let formatted = num?.toString() || '';
+        if(removeRegex){
+            formatted = formatted.replace(removeRegex, '');
+        }
+
+        const parsed = parseNumber(formatted);
         const val = Math.min(Math.max(getMin(), parsed), getMax());
         return isNaN(parsed) ? '' : setDecimalPlaces(val, getDecimalPlaces()).toString();
     };
@@ -90,7 +95,12 @@ export const InputNumber = (props: IInputNumber) => {
      * (only when the number is valid)
      */
     const onChangeHandler = (evt: ChangeEvent<HTMLInputElement>) => {
-        const _text = evt.target.value;
+        let _text = evt.target.value;
+
+        if(removeRegex){
+            _text = _text.replace(removeRegex, '');
+        }
+
         setText(_text);
 
         if(_text === text) return;
@@ -189,9 +199,21 @@ export const InputNumber = (props: IInputNumber) => {
         return parsed;
     };
 
+    const filterProps = () => {
+        const copy = { ...props };
+
+        delete copy.decimalPlaces;
+        delete copy.inputStyles;
+        delete copy.inputClasses;
+        delete copy.onKeyDownCallback;
+        delete copy.onChangeCallback;
+
+        return copy;
+    };
+
     return (
         <input
-            { ...props }
+            { ...filterProps() }
             type="text"
             value={ text }
             ref={ inputRef }

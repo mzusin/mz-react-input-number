@@ -1,6 +1,5 @@
 import { CSSProperties, InputHTMLAttributes } from 'react';
 
-// input: React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
 export interface IInputNumber extends InputHTMLAttributes<HTMLInputElement>{
     min?: number|string;
     max?: number|string;
@@ -14,11 +13,7 @@ export interface IInputNumber extends InputHTMLAttributes<HTMLInputElement>{
     onKeyDownCallback?: Function;
 
     decimalPlaces?: number; // 2 by default
-
-    // ------------------------------
-    autoComplete?: string;
-    disabled?: boolean;
-    maxLength?: number;
+    removeRegex?: RegExp;
 }
 
 export enum EUpdateType {
