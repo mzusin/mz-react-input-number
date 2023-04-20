@@ -1,8 +1,6 @@
-# React Input Number
+# React Input Number ✎﹏﹏﹏﹏
 
 This library is a React component that provides a user-friendly interface for entering numerical values. It accepts various props that can be used to customize its behavior and appearance.
-
-✎﹏﹏﹏﹏
 
 ## Features
 - Based on [TypeScript](https://www.typescriptlang.org/).
