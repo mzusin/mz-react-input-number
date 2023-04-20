@@ -465,7 +465,7 @@ describe('Input Number', () => {
             expect($input.value).toStrictEqual('-1.99');
         });
 
-        test('Change value to decimal places > than default should not be changed before the focus', () => {
+        test('Change value to decimal places > than default should not be changed before the blur', () => {
 
             const { container} = render(
                 <InputNumber />
@@ -481,7 +481,7 @@ describe('Input Number', () => {
             expect($input.value).toStrictEqual('1.1234567');
         });
 
-        test('Change value to wrong text should not be changed before the focus', () => {
+        test('Change value to wrong text should not be changed before the blur', () => {
 
             const { container} = render(
                 <InputNumber />
@@ -495,6 +495,99 @@ describe('Input Number', () => {
             });
 
             expect($input.value).toStrictEqual('aaa');
+        });
+    });
+
+    describe('Change value & blur event', () => {
+
+        test('Change value to 1 and then blur event', () => {
+
+            const { container} = render(
+                <InputNumber />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            fireEvent.change($input, {
+                target: {
+                    value: '1'
+                }
+            });
+
+            fireEvent.blur($input);
+
+            expect($input.value).toStrictEqual('1');
+        });
+
+        test('Change value to 1.99 and then blur event', () => {
+
+            const { container} = render(
+                <InputNumber />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            fireEvent.change($input, {
+                target: {
+                    value: '1.99'
+                }
+            });
+
+            fireEvent.blur($input);
+
+            expect($input.value).toStrictEqual('1.99');
+        });
+
+        test('Change value to -1.99 and then blur event', () => {
+
+            const { container} = render(
+                <InputNumber />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            fireEvent.change($input, {
+                target: {
+                    value: '-1.99'
+                }
+            });
+
+            fireEvent.blur($input);
+
+            expect($input.value).toStrictEqual('-1.99');
+        });
+
+        test('Change value to decimal places > than default ---> should change after the blur', () => {
+
+            const { container} = render(
+                <InputNumber />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            fireEvent.change($input, {
+                target: {
+                    value: '1.1234567'
+                }
+            });
+
+            fireEvent.blur($input);
+
+            expect($input.value).toStrictEqual('1.1235');
+        });
+
+        test('Change value to wrong text ---> should change after the blur', () => {
+
+            const { container} = render(
+                <InputNumber />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            fireEvent.change($input, {
+                target: {
+                    value: 'aaa'
+                }
+            });
+
+            fireEvent.blur($input);
+
+            expect($input.value).toStrictEqual('');
         });
     });
 
