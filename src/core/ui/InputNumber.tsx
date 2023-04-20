@@ -3,6 +3,8 @@ import { parseNumber } from '../domain/parse-provider';
 import { EUpdateType, IInputNumber } from '../interfaces';
 import { setDecimalPlaces } from 'mz-math';
 
+export const DEFAULT_DECIMAL_PLACES = 4;
+
 export const InputNumber = (props: IInputNumber) => {
 
     const {
@@ -28,7 +30,7 @@ export const InputNumber = (props: IInputNumber) => {
     };
 
     const getDecimalPlaces = () => {
-        return decimalPlaces === undefined ? 2 : decimalPlaces;
+        return decimalPlaces === undefined ? DEFAULT_DECIMAL_PLACES : decimalPlaces;
     };
 
     const getInitialValue = (num?: string|number) => {
