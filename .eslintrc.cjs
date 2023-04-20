@@ -20,6 +20,7 @@ module.exports = {
     ],
     "rules": {
         "@typescript-eslint/ban-ts-comment": "off",
-        "@typescript-eslint/no-unused-vars": ["error", {argsIgnorePattern: "^_", destructuredArrayIgnorePattern: "^_"}]
+        "@typescript-eslint/no-unused-vars": ["error", {argsIgnorePattern: "^_", destructuredArrayIgnorePattern: "^_"}],
+        "@typescript-eslint/ban-types": "off"
     }
 }
