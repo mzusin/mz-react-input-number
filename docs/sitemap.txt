@@ -1,0 +1,5 @@
+https://react-input-number.mzsoft.org
+https://react-input-number.mzsoft.org/pages/basic-usage.html
+https://react-input-number.mzsoft.org/pages/nodejs.html
+https://react-input-number.mzsoft.org/pages/width-height-and-border-radius.html
+https://react-input-number.mzsoft.org/pages/colors.html
