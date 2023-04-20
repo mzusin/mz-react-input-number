@@ -823,4 +823,67 @@ describe('Input Number', () => {
         });
     });
 
+    describe('Cursor Position', () => {
+
+        test('Press on Home ---> should jump to the start', () => {
+
+            const { container} = render(
+                <InputNumber value="100" />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+            $input.setSelectionRange(2, 2);
+
+            fireEvent.keyDown($input, {
+                key: 'Home',
+            });
+
+            expect($input.selectionStart).toStrictEqual(0);
+        });
+
+        test('Press on PageUp ---> should jump to the start', () => {
+
+            const { container} = render(
+                <InputNumber value="100" />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+            $input.setSelectionRange(2, 2);
+
+            fireEvent.keyDown($input, {
+                key: 'PageUp',
+            });
+
+            expect($input.selectionStart).toStrictEqual(0);
+        });
+
+        test('Press on End ---> should jump to the end', () => {
+
+            const { container} = render(
+                <InputNumber value="100" />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+            $input.setSelectionRange(0, 0);
+
+            fireEvent.keyDown($input, {
+                key: 'End',
+            });
+
+            expect($input.selectionStart).toStrictEqual(3);
+        });
+
+        test('Press on PageDown ---> should jump to the end', () => {
+
+            const { container} = render(
+                <InputNumber value="100" />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+            $input.setSelectionRange(0, 0);
+
+            fireEvent.keyDown($input, {
+                key: 'PageDown',
+            });
+
+            expect($input.selectionStart).toStrictEqual(3);
+        });
+    });
+
 });

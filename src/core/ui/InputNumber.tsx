@@ -105,6 +105,19 @@ export const InputNumber = (props: IInputNumber) => {
                 setText('');
                 break;
             }
+
+            case 'Home':
+            case 'PageUp':{
+                inputRef.current?.setSelectionRange(0, 0);
+                break;
+            }
+
+            case 'End':
+            case 'PageDown':{
+                const val = inputRef.current?.value || '';
+                inputRef.current?.setSelectionRange(val.length, val.length);
+                break;
+            }
         }
 
         if(typeof onKeyDown === 'function'){
