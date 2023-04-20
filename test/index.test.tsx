@@ -685,10 +685,10 @@ describe('Input Number', () => {
 
         test('send onChange callback', () => {
 
-            const onChange = jest.fn();
+            const onChangeCallback = jest.fn();
 
             const { container} = render(
-                <InputNumber onChange={ onChange }/>
+                <InputNumber onChangeCallback={ onChangeCallback }/>
             );
             const $input = container.querySelector('input') as HTMLInputElement;
 
@@ -698,7 +698,7 @@ describe('Input Number', () => {
                 }
             });
 
-            expect(onChange).toHaveBeenCalledTimes(1);
+            expect(onChangeCallback).toHaveBeenCalledTimes(1);
         });
 
         test("don't send onChange callback if value hasn't changed", () => {
@@ -721,12 +721,12 @@ describe('Input Number', () => {
 
         test('send onKeyDown callback on arrow up', () => {
 
-            const onKeyDown = jest.fn();
+            const onKeyDownCallback = jest.fn();
 
             const { container} = render(
                 <InputNumber
                     value={ 10 }
-                    onKeyDown={ onKeyDown }
+                    onKeyDownCallback={ onKeyDownCallback }
                 />
             );
             const $input = container.querySelector('input') as HTMLInputElement;
@@ -735,17 +735,17 @@ describe('Input Number', () => {
                 key: 'ArrowUp',
             });
 
-            expect(onKeyDown).toHaveBeenCalledTimes(1);
+            expect(onKeyDownCallback).toHaveBeenCalledTimes(1);
         });
 
         test('send onKeyDown callback on arrow down', () => {
 
-            const onKeyDown = jest.fn();
+            const onKeyDownCallback = jest.fn();
 
             const { container} = render(
                 <InputNumber
                     value={ 10 }
-                    onKeyDown={ onKeyDown }
+                    onKeyDownCallback={ onKeyDownCallback }
                 />
             );
             const $input = container.querySelector('input') as HTMLInputElement;
@@ -754,17 +754,17 @@ describe('Input Number', () => {
                 key: 'ArrowDown',
             });
 
-            expect(onKeyDown).toHaveBeenCalledTimes(1);
+            expect(onKeyDownCallback).toHaveBeenCalledTimes(1);
         });
 
         test('send onChange callback on arrow up', () => {
 
-            const onChange = jest.fn();
+            const onChangeCallback = jest.fn();
 
             const { container} = render(
                 <InputNumber
                     value={ 10 }
-                    onChange={ onChange }
+                    onChangeCallback={ onChangeCallback }
                 />
             );
             const $input = container.querySelector('input') as HTMLInputElement;
@@ -773,17 +773,17 @@ describe('Input Number', () => {
                 key: 'ArrowUp',
             });
 
-            expect(onChange).toHaveBeenCalledTimes(1);
+            expect(onChangeCallback).toHaveBeenCalledTimes(1);
         });
 
         test('send onChange callback on arrow down', () => {
 
-            const onChange = jest.fn();
+            const onChangeCallback = jest.fn();
 
             const { container} = render(
                 <InputNumber
                     value={ 10 }
-                    onChange={ onChange }
+                    onChangeCallback={ onChangeCallback }
                 />
             );
             const $input = container.querySelector('input') as HTMLInputElement;
@@ -792,7 +792,7 @@ describe('Input Number', () => {
                 key: 'ArrowDown',
             });
 
-            expect(onChange).toHaveBeenCalledTimes(1);
+            expect(onChangeCallback).toHaveBeenCalledTimes(1);
         });
     });
 
@@ -982,4 +982,16 @@ describe('Input Number', () => {
 
     });
 
+    describe('Other inout attributes', () => {
+
+        test('Disabled', () => {
+
+            const { container} = render(
+                <InputNumber value={ 50 } disabled={ true } />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            expect($input.disabled).toStrictEqual(true);
+        });
+    });
 });

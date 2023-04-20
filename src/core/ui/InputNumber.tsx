@@ -10,7 +10,7 @@ export const InputNumber = (props: IInputNumber) => {
     const {
         min, max,
         step, value,
-        onChange, onKeyDown,
+        onChangeCallback, onKeyDownCallback,
         decimalPlaces,
         inputClasses, inputStyles
     } = props;
@@ -80,8 +80,8 @@ export const InputNumber = (props: IInputNumber) => {
     // ------------------------ EVENTS -------------------------
 
     const sendOnChangeEventToUser = (num: number) => {
-        if(!isNaN(num) && !!onChange && typeof onChange === 'function'){
-            onChange(num);
+        if(!isNaN(num) && !!onChangeCallback && typeof onChangeCallback === 'function'){
+            onChangeCallback(num);
         }
     };
 
@@ -140,8 +140,8 @@ export const InputNumber = (props: IInputNumber) => {
             }
         }
 
-        if(typeof onKeyDown === 'function'){
-            onKeyDown(evt);
+        if(!!onKeyDownCallback && typeof onKeyDownCallback === 'function'){
+            onKeyDownCallback(evt);
         }
     };
 
@@ -191,6 +191,7 @@ export const InputNumber = (props: IInputNumber) => {
 
     return (
         <input
+            { ...props }
             type="text"
             value={ text }
             ref={ inputRef }
