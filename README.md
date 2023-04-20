@@ -13,3 +13,23 @@ This library is a React component that provides a user-friendly interface for en
 - It allows using all standard HTML input attributes like disabled, autocomplete, etc., to customize the behavior of the input field.
 - Remove regex
 - Optionally, it allows removing non-numeric characters from the input field using regular expressions, ensuring that the input only contains valid numeric characters.
+
+## Documentation 🔖
+### Getting Started 
+- [Basic Usage](https://react-input-number.mzsoft.org/pages/basic-usage.html)
+- [Classes & Styles](https://react-input-number.mzsoft.org/pages/classes-and-styles.html)
+### Callbacks 
+- [onChangeCallback()](https://react-input-number.mzsoft.org/pages/onChangeCallback.html)
+- [onKeyDownCallback()](https://react-input-number.mzsoft.org/pages/onKeyDownCallback.html)
+### Other 
+- [Typescript Interfaces](https://react-input-number.mzsoft.org/pages/typescript-interfaces.html)
+- [Decimal Places](https://react-input-number.mzsoft.org/pages/decimal-places.html)
+- [Remove Regex](https://react-input-number.mzsoft.org/pages/remove-regex.html)
+------------------------------
+
+## License
+
+[MIT license](https://github.com/mzusin/mz-react-input-number/blob/main/LICENSE)
+
+It can be used **for free** in any personal or commercial project :gift: 
+
