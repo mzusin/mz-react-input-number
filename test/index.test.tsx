@@ -628,6 +628,82 @@ describe('Input Number', () => {
 
             expect(onChange).toHaveBeenCalledTimes(0);
         });
+
+        test('send onKeyDown callback on arrow up', () => {
+
+            const onKeyDown = jest.fn();
+
+            const { container} = render(
+                <InputNumber
+                    value={ 10 }
+                    onKeyDown={ onKeyDown }
+                />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            fireEvent.keyDown($input, {
+                key: 'ArrowUp',
+            });
+
+            expect(onKeyDown).toHaveBeenCalledTimes(1);
+        });
+
+        test('send onKeyDown callback on arrow down', () => {
+
+            const onKeyDown = jest.fn();
+
+            const { container} = render(
+                <InputNumber
+                    value={ 10 }
+                    onKeyDown={ onKeyDown }
+                />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            fireEvent.keyDown($input, {
+                key: 'ArrowDown',
+            });
+
+            expect(onKeyDown).toHaveBeenCalledTimes(1);
+        });
+
+        test('send onChange callback on arrow up', () => {
+
+            const onChange = jest.fn();
+
+            const { container} = render(
+                <InputNumber
+                    value={ 10 }
+                    onChange={ onChange }
+                />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            fireEvent.keyDown($input, {
+                key: 'ArrowUp',
+            });
+
+            expect(onChange).toHaveBeenCalledTimes(1);
+        });
+
+        test('send onChange callback on arrow down', () => {
+
+            const onChange = jest.fn();
+
+            const { container} = render(
+                <InputNumber
+                    value={ 10 }
+                    onChange={ onChange }
+                />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            fireEvent.keyDown($input, {
+                key: 'ArrowDown',
+            });
+
+            expect(onChange).toHaveBeenCalledTimes(1);
+        });
     });
 
 });
