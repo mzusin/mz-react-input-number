@@ -415,4 +415,87 @@ describe('Input Number', () => {
         });
     });
 
+    describe('Change Value', () => {
+
+        test('Change value to 1', () => {
+
+            const { container} = render(
+                <InputNumber />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            fireEvent.change($input, {
+                target: {
+                    value: '1'
+                }
+            });
+
+            expect($input.value).toStrictEqual('1');
+        });
+
+        test('Change value to 1.99', () => {
+
+            const { container} = render(
+                <InputNumber />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            fireEvent.change($input, {
+                target: {
+                    value: '1.99'
+                }
+            });
+
+            expect($input.value).toStrictEqual('1.99');
+        });
+
+        test('Change value to -1.99', () => {
+
+            const { container} = render(
+                <InputNumber />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            fireEvent.change($input, {
+                target: {
+                    value: '-1.99'
+                }
+            });
+
+            expect($input.value).toStrictEqual('-1.99');
+        });
+
+        test('Change value to decimal places > than default should not be changed before the focus', () => {
+
+            const { container} = render(
+                <InputNumber />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            fireEvent.change($input, {
+                target: {
+                    value: '1.1234567'
+                }
+            });
+
+            expect($input.value).toStrictEqual('1.1234567');
+        });
+
+        test('Change value to wrong text should not be changed before the focus', () => {
+
+            const { container} = render(
+                <InputNumber />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            fireEvent.change($input, {
+                target: {
+                    value: 'aaa'
+                }
+            });
+
+            expect($input.value).toStrictEqual('aaa');
+        });
+    });
+
 });
