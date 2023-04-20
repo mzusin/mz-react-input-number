@@ -42,6 +42,15 @@ export const InputNumber = (props: IInputNumber) => {
         return isNaN(parsed) ? '' : setDecimalPlaces(val, getDecimalPlaces()).toString();
     };
 
+    const moveCursorToStart = () => {
+        inputRef.current?.setSelectionRange(0, 0);
+    };
+
+    const moveCursorToEnd = () => {
+        const val = inputRef.current?.value || '';
+        inputRef.current?.setSelectionRange(val.length, val.length);
+    };
+
     // ------------------------ INIT -------------------------
 
     const [ text, setText] = useState(validate(value));
@@ -85,14 +94,18 @@ export const InputNumber = (props: IInputNumber) => {
             case 'ArrowUp': {
                 const value = update(EUpdateType.UP);
                 setText(isNaN(value) ? '' : value.toString());
+                moveCursorToEnd();
                 sendOnChangeEventToUser(value);
+                evt.preventDefault();
                 break;
             }
 
             case 'ArrowDown': {
                 const value = update(EUpdateType.DOWN);
                 setText(isNaN(value) ? '' : value.toString());
+                moveCursorToEnd();
                 sendOnChangeEventToUser(value);
+                evt.preventDefault();
                 break;
             }
 
@@ -108,14 +121,13 @@ export const InputNumber = (props: IInputNumber) => {
 
             case 'Home':
             case 'PageUp':{
-                inputRef.current?.setSelectionRange(0, 0);
+                moveCursorToStart();
                 break;
             }
 
             case 'End':
             case 'PageDown':{
-                const val = inputRef.current?.value || '';
-                inputRef.current?.setSelectionRange(val.length, val.length);
+                moveCursorToEnd();
                 break;
             }
         }

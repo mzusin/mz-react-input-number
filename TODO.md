@@ -1,5 +1,4 @@
 - mousewheel
-- page up / down arrows (jump to stat end?)
 - accessibility
 - paste event
 - up / down / reset buttons? check sketch app style

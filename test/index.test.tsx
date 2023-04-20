@@ -884,6 +884,36 @@ describe('Input Number', () => {
 
             expect($input.selectionStart).toStrictEqual(3);
         });
+
+        test('Press on ArrowUp ---> should jump to the end', () => {
+
+            const { container} = render(
+                <InputNumber value="100" />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+            $input.setSelectionRange(0, 0);
+
+            fireEvent.keyDown($input, {
+                key: 'ArrowUp',
+            });
+
+            expect($input.selectionStart).toStrictEqual(3);
+        });
+
+        test('Press on ArrowDown ---> should jump to the end', () => {
+
+            const { container} = render(
+                <InputNumber value="110" />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+            $input.setSelectionRange(0, 0);
+
+            fireEvent.keyDown($input, {
+                key: 'ArrowDown',
+            });
+
+            expect($input.selectionStart).toStrictEqual(3);
+        });
     });
 
 });
