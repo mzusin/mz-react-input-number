@@ -995,5 +995,42 @@ describe('Input Number', () => {
         });
     });
 
+    describe('Remove Regex', () => {
 
+        test('Accept only numbers: aaa1aaa2', () => {
+
+            const { container} = render(
+                <InputNumber removeRegex={ /[^\-0-9.]*/ig } />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            fireEvent.change($input, {
+                target: {
+                    value: 'aaa1aaa2'
+                }
+            });
+
+            fireEvent.blur($input);
+
+            expect($input.value).toStrictEqual('12');
+        });
+
+        test('Accept only numbers: -12.5asdfasdf', () => {
+
+            const { container} = render(
+                <InputNumber removeRegex={ /[^\-0-9.]*/ig } />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            fireEvent.change($input, {
+                target: {
+                    value: '-12.5asdfasdf'
+                }
+            });
+
+            fireEvent.blur($input);
+
+            expect($input.value).toStrictEqual('-12.5');
+        });
+    });
 });

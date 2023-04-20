@@ -202,9 +202,12 @@ export const InputNumber = (props: IInputNumber) => {
     const filterProps = () => {
         const copy = { ...props };
 
-        delete copy.decimalPlaces;
         delete copy.inputStyles;
         delete copy.inputClasses;
+
+        delete copy.decimalPlaces;
+        delete copy.removeRegex;
+
         delete copy.onKeyDownCallback;
         delete copy.onChangeCallback;
 

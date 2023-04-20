@@ -10,3 +10,4 @@
 - End and PageDown - jump to the end of the field
 - Custom classes and styles can be passed
 - Accepts all standard inout props like disabled, autocomplete, etc.
+- Remove regex
