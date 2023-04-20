@@ -916,4 +916,70 @@ describe('Input Number', () => {
         });
     });
 
+    describe('MouseWheel', () => {
+
+        test('MouseWheel up', () => {
+
+            const { container} = render(
+                <InputNumber
+                    step={ 1 }
+                    value={ 10 }
+                />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            fireEvent.wheel($input, {
+                deltaY: -1, // go up
+            });
+
+            expect($input.value).toStrictEqual('11');
+        });
+
+        test('MouseWheel down', () => {
+
+            const { container} = render(
+                <InputNumber
+                    step={ 1 }
+                    value={ 10 }
+                />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            fireEvent.wheel($input, {
+                deltaY: 1, // go down
+            });
+
+            expect($input.value).toStrictEqual('9');
+        });
+
+        test('MouseWheel up on empty value ---> should not change it', () => {
+
+            const { container} = render(
+                <InputNumber />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            fireEvent.wheel($input, {
+                deltaY: -1, // go up
+            });
+
+            expect($input.value).toStrictEqual('');
+        });
+
+        test('MouseWheel down on empty value ---> should not change it', () => {
+
+            const { container} = render(
+                <InputNumber />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            fireEvent.wheel($input, {
+                deltaY: 1, // go down
+            });
+
+            expect($input.value).toStrictEqual('');
+        });
+
+    });
+
 });

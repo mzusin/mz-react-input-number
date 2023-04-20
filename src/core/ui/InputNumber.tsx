@@ -1,4 +1,4 @@
-import { useState, useEffect, ChangeEvent, KeyboardEvent, useRef } from 'react';
+import { useState, useEffect, ChangeEvent, KeyboardEvent, useRef, WheelEvent } from 'react';
 import { parseNumber } from '../domain/parse-provider';
 import { EUpdateType, IInputNumber } from '../interfaces';
 import { setDecimalPlaces } from 'mz-math';
@@ -51,6 +51,20 @@ export const InputNumber = (props: IInputNumber) => {
         inputRef.current?.setSelectionRange(val.length, val.length);
     };
 
+    const up = () => {
+        const value = update(EUpdateType.UP);
+        setText(isNaN(value) ? '' : value.toString());
+        moveCursorToEnd();
+        sendOnChangeEventToUser(value);
+    };
+
+    const down = () => {
+        const value = update(EUpdateType.DOWN);
+        setText(isNaN(value) ? '' : value.toString());
+        moveCursorToEnd();
+        sendOnChangeEventToUser(value);
+    };
+
     // ------------------------ INIT -------------------------
 
     const [ text, setText] = useState(validate(value));
@@ -92,19 +106,13 @@ export const InputNumber = (props: IInputNumber) => {
 
         switch(evt.key) {
             case 'ArrowUp': {
-                const value = update(EUpdateType.UP);
-                setText(isNaN(value) ? '' : value.toString());
-                moveCursorToEnd();
-                sendOnChangeEventToUser(value);
+                up();
                 evt.preventDefault();
                 break;
             }
 
             case 'ArrowDown': {
-                const value = update(EUpdateType.DOWN);
-                setText(isNaN(value) ? '' : value.toString());
-                moveCursorToEnd();
-                sendOnChangeEventToUser(value);
+                down();
                 evt.preventDefault();
                 break;
             }
@@ -144,6 +152,17 @@ export const InputNumber = (props: IInputNumber) => {
         setText(validate(text));
     };
 
+    const onWheelHandler = (evt: WheelEvent) => {
+        const isUp = evt.deltaY < 0;
+
+        if(isUp){
+            up();
+        }
+        else{
+            down();
+        }
+    };
+
     // ------------------------ RENDER -------------------------
 
     /**
@@ -180,6 +199,7 @@ export const InputNumber = (props: IInputNumber) => {
             onBlur={ onBlurHandler }
             className={ inputClasses }
             style={ inputStyles }
+            onWheel={ onWheelHandler }
         />
     )
 };

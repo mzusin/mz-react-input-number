@@ -8,3 +8,4 @@
 - Custom classes and styles can be passed
 - Home and PageUp - jump to the start of the field
 - End and PageDown - jump to the end of the field
+- Mousewheel support
