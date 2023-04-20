@@ -104,7 +104,7 @@
           <path d="m7 7 5 5-5 5m6-10 5 5-5 5"/>
         </svg>
 
-    </div><div class="flex flex-col" data-links><a href="/pages/basic-usage.html" title="" class="pl-3 border-l border-slate-150 dark:border-slate-600 pb-2 text-sky-500">Basic Usage</a><a href="/pages/classes-and-styles.html" title="" class="pl-3 border-l border-slate-150 dark:border-slate-600  text-slate-500">Classes & Styles</a></div><div class="text-xl my-4 flex items-center cursor-pointer" data-collapsible-title data-opened="true" data-id="30-callbacks">
+    </div><div class="flex flex-col" data-links><a href="/pages/basic-usage.html" title="" class="pl-3 border-l border-slate-150 dark:border-slate-600 pb-2 text-slate-500">Basic Usage</a><a href="/pages/classes-and-styles.html" title="" class="pl-3 border-l border-slate-150 dark:border-slate-600  text-sky-500">Classes & Styles</a></div><div class="text-xl my-4 flex items-center cursor-pointer" data-collapsible-title data-opened="true" data-id="30-callbacks">
         Callbacks 
         <svg data-arrow xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="#626e7f" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="ml-2 rotate-90" viewBox="0 0 24 24">
           <path stroke="none" d="M0 0h24v24H0z"/>
@@ -123,10 +123,8 @@
     </div>
 
     <div class="p-4 overflow-y-auto h-full md:w-100-350 dark:bg-slate-800">
-      <div class="w-800 max-w-full mx-auto my-10 leading-7 text-lg text-slate-800 dark:text-slate-200"><h2 class="text-3xl mb-8">Basic Usage</h2>
-<p class="mb-4">Install the library from npm:</p>
-<pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code>npm i mz-react-input-number</code></pre>
-<p class="mb-4">Use the <strong class="font-bold">min</strong>, <strong class="font-bold">max</strong>, <strong class="font-bold">step</strong>, and <strong class="font-bold">value</strong> properties to customize the component.</p>
+      <div class="w-800 max-w-full mx-auto my-10 leading-7 text-lg text-slate-800 dark:text-slate-200"><h2 class="text-3xl mb-8">Classes &amp; Styles</h2>
+<p class="mb-4">You can provide component CSS classes like this:</p>
 <pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code><span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span>, { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">InputNumber</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;mz-react-input-number&#x27;</span>;
 
@@ -136,28 +134,57 @@
 
     <span class="hljs-keyword">return</span> (
         <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">InputNumber</span>
-            <span class="hljs-attr">min</span>=<span class="hljs-string">{</span> <span class="hljs-attr">0</span> }
-            <span class="hljs-attr">max</span>=<span class="hljs-string">{</span> <span class="hljs-attr">100</span> }
-            <span class="hljs-attr">step</span>=<span class="hljs-string">{</span> <span class="hljs-attr">0.1</span> }
             <span class="hljs-attr">value</span>=<span class="hljs-string">{</span> <span class="hljs-attr">value</span> }
             <span class="hljs-attr">onChangeCallback</span>=<span class="hljs-string">{</span> <span class="hljs-attr">setValue</span> }
+            <span class="hljs-attr">inputClasses</span>=<span class="hljs-string">&quot;my-class-1 my-class-2&quot;</span>
         /&gt;</span></span>
     );
 };</code></pre>
-<blockquote class="bg-gray-100 pt-4 px-4 flex my-10 border-l-4 border-blue-300 rounded dark:bg-sky-900">
-<p class="mb-4">All props are <strong class="font-bold">optional</strong>.</p>
-</blockquote>
+<p class="mb-4">The styles can be provided as follows:</p>
+<pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code><span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span>, { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">InputNumber</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;mz-react-input-number&#x27;</span>;
+
+<span class="hljs-keyword">const</span> styles = {
+    <span class="hljs-attr">border</span>: <span class="hljs-string">&#x27;3px solid #efefef&#x27;</span>,
+    <span class="hljs-attr">backgroundColor</span>: <span class="hljs-string">&#x27;#fff&#x27;</span>,
+};
+
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">App</span> = (<span class="hljs-params"></span>) =&gt; {
+
+    <span class="hljs-keyword">const</span> [value, setValue] = <span class="hljs-title function_">useState</span>(<span class="hljs-number">10</span>);
+
+    <span class="hljs-keyword">return</span> (
+        <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">InputNumber</span>
+            <span class="hljs-attr">value</span>=<span class="hljs-string">{</span> <span class="hljs-attr">value</span> }
+            <span class="hljs-attr">onChangeCallback</span>=<span class="hljs-string">{</span> <span class="hljs-attr">setValue</span> }
+            <span class="hljs-attr">inputStyles</span>=<span class="hljs-string">{</span> <span class="hljs-attr">styles</span> }
+        /&gt;</span></span>
+    );
+};</code></pre>
 </div>
 
-      <div class="w-800 max-w-full mx-auto grid  gap-8 items-center text-slate-500">
+      <div class="w-800 max-w-full mx-auto grid lg:grid-cols-2 gap-8 items-center text-slate-500">
+<div class="flex justify-between items-start border border-slate-200 rounded p-4">
+  <a href="/pages/basic-usage.html" title="" class="mr-4 hover:text-blue-500">
+    <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24">
+    <path stroke="none" d="M0 0h24v24H0z"/>
+    <path d="M5 12h14M5 12l6 6m-6-6 6-6"/>
+  </svg>
+  </a>
+  <div class="flex flex-col items-end justify-center">
+    <div class="mb-2 text-sm text-slate-300">Previous</div>
+    <a href="/pages/basic-usage.html" title="" class="hover:text-blue-500">Basic Usage</a>
+  </div>
+</div>      
+    
 <div class="flex justify-between items-start border border-slate-200 rounded p-4">
   
   <div class="flex flex-col justify-center">
     <div class="mb-2 text-sm text-slate-300">Next</div>
-    <a href="/pages/classes-and-styles.html" title="" class="hover:text-blue-500">Classes & Styles</a>
+    <a href="/pages/onChangeCallback.html" title="" class="hover:text-blue-500">onChangeCallback()</a>
   </div>
   
-  <a href="/pages/classes-and-styles.html" title="" class="mr-4 hover:text-blue-500">
+  <a href="/pages/onChangeCallback.html" title="" class="mr-4 hover:text-blue-500">
     <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24">
      <path stroke="none" d="M0 0h24v24H0z"/>
      <path d="M5 12h14m-6 6 6-6m-6-6 6 6"/>

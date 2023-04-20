@@ -1,12 +1,6 @@
-## Basic Usage
+# "Remove" Regex 
 
-Install the library from npm:
-  
-```shell
-npm i mz-react-input-number
-```
-
-Use the **min**, **max**, **step**, and **value** properties to customize the component. 
+This property allows removing non-numeric characters from the input field using regular expression, ensuring that the input only contains valid numeric characters.
 
 ```ts
 import React, { useState } from 'react';
@@ -18,16 +12,12 @@ const App = () => {
 
     return (
         <InputNumber
-            min={ 0 }
-            max={ 100 }
-            step={ 0.1 }
             value={ value }
             onChangeCallback={ setValue }
+            removeRegex={ /[^\-0-9.]*/ig }
         />
     );
 };
 ``` 
 
-> All props are **optional**.
-
-
+> Any regular expression can be specified.

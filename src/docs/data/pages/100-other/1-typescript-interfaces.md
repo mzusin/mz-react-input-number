@@ -1,5 +1,8 @@
-import { CSSProperties, InputHTMLAttributes } from 'react';
+## TypeScript Interfaces
 
+The interface below represents the properties of the InputNumber component.
+
+```ts
 export interface IInputNumber extends InputHTMLAttributes<HTMLInputElement>{
     min?: number|string;
     max?: number|string;
@@ -15,9 +18,13 @@ export interface IInputNumber extends InputHTMLAttributes<HTMLInputElement>{
     decimalPlaces?: number;
     removeRegex?: RegExp;
 }
+```
 
+
+```ts
 export enum EUpdateType {
     NO_CHANGE = 0,
     UP = 1,
     DOWN = 2,
 }
+```

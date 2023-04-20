@@ -1,12 +1,6 @@
-## Basic Usage
+# Numeric Precision (number of decimal places)
 
-Install the library from npm:
-  
-```shell
-npm i mz-react-input-number
-```
-
-Use the **min**, **max**, **step**, and **value** properties to customize the component. 
+The default number of decimal places is **4**. But you can customize it like this:
 
 ```ts
 import React, { useState } from 'react';
@@ -18,16 +12,12 @@ const App = () => {
 
     return (
         <InputNumber
-            min={ 0 }
-            max={ 100 }
-            step={ 0.1 }
             value={ value }
             onChangeCallback={ setValue }
+            decimalPlaces={ 2 }
         />
     );
 };
 ``` 
 
-> All props are **optional**.
-
-
+> To disable the decimal places limit, you can pass **Infinity**.
