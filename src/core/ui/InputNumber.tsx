@@ -1,4 +1,4 @@
-import { useState, useEffect, ChangeEvent, KeyboardEvent } from 'react';
+import { useState, useEffect, ChangeEvent, KeyboardEvent, useRef } from 'react';
 import { parseNumber } from '../domain/parse-provider';
 import { EUpdateType, IInputNumber } from '../interfaces';
 import { setDecimalPlaces } from 'mz-math';
@@ -13,6 +13,8 @@ export const InputNumber = (props: IInputNumber) => {
         onChange, onKeyDown,
         decimalPlaces
     } = props;
+
+    // ------------------------ HELPERS -------------------------
 
     const getMin = () => {
         const _min = parseNumber(min);
@@ -33,17 +35,25 @@ export const InputNumber = (props: IInputNumber) => {
         return decimalPlaces === undefined ? DEFAULT_DECIMAL_PLACES : decimalPlaces;
     };
 
-    const getInitialValue = (num?: string|number) => {
+    const validate = (num?: string|number) => {
         const parsed = parseNumber(num?.toString() || '');
         const val = Math.min(Math.max(getMin(), parsed), getMax());
         return isNaN(parsed) ? '' : setDecimalPlaces(val, getDecimalPlaces()).toString();
     };
 
-    const [ text, setText ] = useState(getInitialValue(value));
+    // ------------------------ INIT -------------------------
+
+    const [ text, setText] = useState(validate(value));
+    const inputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
-        setText(getInitialValue(value));
+        // dont reset text value while editing
+        if(document.activeElement === inputRef.current) return;
+
+        setText(validate(value));
     }, [value]);
+
+    // ------------------------ EVENTS -------------------------
 
     const sendOnChangeEventToUser = (num: number) => {
         if(!isNaN(num) && !!onChange && typeof onChange === 'function'){
@@ -57,9 +67,9 @@ export const InputNumber = (props: IInputNumber) => {
      */
     const onChangeHandler = (evt: ChangeEvent<HTMLInputElement>) => {
         const _text = evt.target.value;
-        if(_text == text) return;
-
         setText(_text);
+
+        if(_text === text) return;
 
         const parsed = parseNumber(_text);
         sendOnChangeEventToUser(parsed);
@@ -92,6 +102,15 @@ export const InputNumber = (props: IInputNumber) => {
     };
 
     /**
+     * Validate text value on blur
+     */
+    const onBlurHandler = () => {
+        setText(validate(text));
+    };
+
+    // ------------------------ RENDER -------------------------
+
+    /**
      * Return up / down number or NaN.
      */
     const update = (updateType: EUpdateType) : number => {
@@ -119,8 +138,10 @@ export const InputNumber = (props: IInputNumber) => {
         <input
             type="text"
             value={ text }
+            ref={ inputRef }
             onChange={ onChangeHandler }
             onKeyDown={ onKeyDownHandler }
+            onBlur={ onBlurHandler }
         />
     )
 };

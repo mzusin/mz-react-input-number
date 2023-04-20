@@ -97,6 +97,16 @@ describe('Input Number', () => {
             expect($input.value).toStrictEqual('17');
         });
 
+        test('Negative initial number', () => {
+
+            const { container} = render(
+                <InputNumber value={ -14.33 } />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            expect($input.value).toStrictEqual('-14.33');
+        });
+
     });
 
     describe('Arrow Up', () => {
@@ -233,6 +243,23 @@ describe('Input Number', () => {
 
             expect($input.value).toStrictEqual('');
         });
+
+        test('Arrow up with negative step', () => {
+
+            const { container} = render(
+                <InputNumber
+                    value={ 10 }
+                    step={ -0.1 }
+                />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            fireEvent.keyDown($input, {
+                key: 'ArrowUp',
+            });
+
+            expect($input.value).toStrictEqual('9.9');
+        });
     });
 
     describe('Arrow Down', () => {
@@ -368,6 +395,23 @@ describe('Input Number', () => {
             });
 
             expect($input.value).toStrictEqual('');
+        });
+
+        test('Arrow down with negative step', () => {
+
+            const { container} = render(
+                <InputNumber
+                    value={ 10 }
+                    step={ -0.1 }
+                />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            fireEvent.keyDown($input, {
+                key: 'ArrowDown',
+            });
+
+            expect($input.value).toStrictEqual('10.1');
         });
     });
 
