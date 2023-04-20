@@ -95,6 +95,16 @@ export const InputNumber = (props: IInputNumber) => {
                 sendOnChangeEventToUser(value);
                 break;
             }
+
+            case 'Enter': {
+                setText(validate(text));
+                break;
+            }
+
+            case 'Escape': {
+                setText('');
+                break;
+            }
         }
 
         if(typeof onKeyDown === 'function'){

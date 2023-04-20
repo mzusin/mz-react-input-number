@@ -415,6 +415,96 @@ describe('Input Number', () => {
         });
     });
 
+    describe('Enter', () => {
+
+        test('Simple enter ---> value not changing', () => {
+
+            const { container} = render(
+                <InputNumber
+                    value={ 10 }
+                />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            fireEvent.keyDown($input, {
+                key: 'Enter',
+            });
+
+            expect($input.value).toStrictEqual('10');
+        });
+
+        test('Enter when wrong value', () => {
+
+            const { container} = render(
+                <InputNumber
+                    value="aaa"
+                />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            fireEvent.keyDown($input, {
+                key: 'Enter',
+            });
+
+            expect($input.value).toStrictEqual('');
+        });
+
+        test('Enter when value < min', () => {
+
+            const { container} = render(
+                <InputNumber
+                    min={ 10 }
+                    value={ 1 }
+                />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            fireEvent.keyDown($input, {
+                key: 'Enter',
+            });
+
+            expect($input.value).toStrictEqual('10');
+        });
+
+        test('Enter when value > max', () => {
+
+            const { container} = render(
+                <InputNumber
+                    max={ 10 }
+                    value={ 100 }
+                />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            fireEvent.keyDown($input, {
+                key: 'Enter',
+            });
+
+            expect($input.value).toStrictEqual('10');
+        });
+
+    });
+
+    describe('Escape', () => {
+
+        test('Simple escape ---> clear the value', () => {
+
+            const { container} = render(
+                <InputNumber
+                    value={ 10 }
+                />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            fireEvent.keyDown($input, {
+                key: 'Escape',
+            });
+
+            expect($input.value).toStrictEqual('');
+        });
+
+    });
+
     describe('Change Value', () => {
 
         test('Change value to 1', () => {
