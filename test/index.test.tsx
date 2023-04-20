@@ -591,4 +591,43 @@ describe('Input Number', () => {
         });
     });
 
+    describe('User Callbacks ', () => {
+
+        test('send onChange callback', () => {
+
+            const onChange = jest.fn();
+
+            const { container} = render(
+                <InputNumber onChange={ onChange }/>
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            fireEvent.change($input, {
+                target: {
+                    value: '1'
+                }
+            });
+
+            expect(onChange).toHaveBeenCalledTimes(1);
+        });
+
+        test("don't send onChange callback if value hasn't changed", () => {
+
+            const onChange = jest.fn();
+
+            const { container} = render(
+                <InputNumber value="1" onChange={ onChange }/>
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            fireEvent.change($input, {
+                target: {
+                    value: '1'
+                }
+            });
+
+            expect(onChange).toHaveBeenCalledTimes(0);
+        });
+    });
+
 });
