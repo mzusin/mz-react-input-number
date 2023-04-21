@@ -20,6 +20,8 @@ const App = () => {
 };
 ``` 
 
+> You can also use **className** instead of **inputClasses**.
+
 The styles can be provided as follows:
 
 ```ts
@@ -44,3 +46,5 @@ const App = () => {
     );
 };
 ``` 
+
+> You can also use **style** instead of **inputStyles**.

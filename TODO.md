@@ -1,2 +1,0 @@
-- native className & styles - add to docs
-- 

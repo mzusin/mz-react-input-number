@@ -15,6 +15,13 @@ const App = () => {
             value={ num }
             onChangeCallback={ setNum }
             removeRegex={ /[^\-0-9.]*/ig }
+            autoFocus={ true }
+            onClick={ ()=> {
+                console.log('click');
+            }}
+            onFocus={ ()=> {
+                console.log('focus');
+            }}
         />
     );
 };
