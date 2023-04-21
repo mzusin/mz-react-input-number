@@ -6,6 +6,12 @@ Install the library from npm:
 npm i mz-react-input-number
 ```
 
+Or with yarn:
+
+```shell
+yarn add mz-react-input-number
+```
+
 Use the **min**, **max**, **step**, and **value** properties to customize the component. 
 
 ```ts

@@ -1,6 +1,6 @@
 {
   "name": "mz-react-input-number",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "This library is a React component that provides a user-friendly interface for entering numerical values. It accepts various props that can be used to customize its behavior and appearance.",
   "type": "module",
   "types": "./dist/index.d.ts",
@@ -77,6 +77,10 @@
     "ts-node": "^10.9.1",
     "tslib": "^2.5.0",
     "typescript": "^5.0.4"
+  },
+  "peerDependencies": {
+    "react": ">=16.9.0",
+    "react-dom": ">=16.9.0"
   },
   "nodemonConfig": {
     "restartable": "rs",

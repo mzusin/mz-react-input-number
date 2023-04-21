@@ -31,6 +31,7 @@ This library is a React component that provides a user-friendly interface for en
 - [Remove Regex](https://react-input-number.mzsoft.org/pages/remove-regex.html)
 ------------------------------
 
+
 ## License
 
 [MIT license](https://github.com/mzusin/mz-react-input-number/blob/main/LICENSE)

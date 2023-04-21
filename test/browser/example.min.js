@@ -1,6 +1,6 @@
 /* 
 MZ React Input Number
-Version: 1.0.4
+Version: 1.0.5
 Author: Miriam Zusin     
 Contact: miriam.zusin@gmail.com
 Documentation: https://github.com/mzusin/mz-react-input-number

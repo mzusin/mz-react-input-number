@@ -1,2 +1,2 @@
-- use native className & styles
-- move "examples" to tests/browser
+- native className & styles - add to docs
+- 
