@@ -798,7 +798,7 @@ describe('Input Number', () => {
 
     describe('Classes & Styles', () => {
 
-        test('Provided classes', () => {
+        test('Provided inputClasses', () => {
 
             const { container} = render(
                 <InputNumber inputClasses="class1 class2" />
@@ -808,7 +808,17 @@ describe('Input Number', () => {
             expect($input.classList.contains('class1') && $input.classList.contains('class2')).toStrictEqual(true);
         });
 
-        test('Provided styles', () => {
+        test('Provided className', () => {
+
+            const { container} = render(
+                <InputNumber className="class1 class2" />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            expect($input.classList.contains('class1') && $input.classList.contains('class2')).toStrictEqual(true);
+        });
+
+        test('Provided inputStyles', () => {
 
             const styles = {
                 color: 'red',
@@ -816,6 +826,20 @@ describe('Input Number', () => {
 
             const { container} = render(
                 <InputNumber inputStyles={ styles } />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            expect($input.style.color).toStrictEqual('red');
+        });
+
+        test('Provided style', () => {
+
+            const styles = {
+                color: 'red',
+            };
+
+            const { container} = render(
+                <InputNumber style={ styles } />
             );
             const $input = container.querySelector('input') as HTMLInputElement;
 

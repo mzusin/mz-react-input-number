@@ -1,6 +1,6 @@
 {
   "name": "mz-react-input-number",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "This library is a React component that provides a user-friendly interface for entering numerical values. It accepts various props that can be used to customize its behavior and appearance.",
   "type": "module",
   "types": "./dist/index.d.ts",

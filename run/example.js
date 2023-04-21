@@ -6,7 +6,7 @@ const args = process.argv.slice(2);
 const watch = args.length > 1 && args[1].trim().toLowerCase() === 'watch';
 
 settings.entryPoints = ['./src/example/index.tsx'];
-settings.outfile = './examples/example.min.js';
+settings.outfile = './test/browser/example.min.js';
 
 if(watch){
     // ------------- watch ---------------
