@@ -1,5 +1,6 @@
 # React Input Number ✎﹏﹏﹏﹏
 
+[![GitHub license](https://img.shields.io/github/license/mzusin/toolcool-color-picker)](https://github.com/mzusin/toolcool-color-picker/blob/main/LICENSE)
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/mzusin/mz-react-input-number)
 [![npm](https://img.shields.io/npm/dw/mz-react-input-number)](https://www.npmjs.com/package/mz-react-input-number)
 [![NPM](https://img.shields.io/badge/npm-input_number-brightgreen)](https://www.npmjs.com/package/mz-react-input-number)
