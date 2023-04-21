@@ -2,6 +2,8 @@
 
 This library is a React component that provides a user-friendly interface for entering numerical values. It accepts various props that can be used to customize its behavior and appearance.
 
+![React Input Number](https://github.com/mzusin/mz-react-input-number/blob/main/img/preview.gif?raw=true)
+
 ## Features
 - Based on [TypeScript](https://www.typescriptlang.org/).
 - It allows setting **minimum** and **maximum** values for numeric inputs, as well as the increment or decrement value for numeric inputs with a **step** value.
