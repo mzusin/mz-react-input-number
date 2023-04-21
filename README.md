@@ -16,6 +16,8 @@ This library is a React component that provides a user-friendly interface for en
 - Remove regex
 - Optionally, it allows removing non-numeric characters from the input field using regular expressions, ensuring that the input only contains valid numeric characters.
 
+![React Input Number](https://github.com/mzusin/mz-react-input-number/blob/main/img/preview-code.png?raw=true)
+
 ## Documentation 🔖
 ### Getting Started 
 - [Basic Usage](https://react-input-number.mzsoft.org/pages/basic-usage.html)
