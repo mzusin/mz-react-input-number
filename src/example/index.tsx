@@ -8,20 +8,14 @@ const App = () => {
     const [num, setNum] = useState(2.2);
 
     return (
-        <>
-            <InputNumber
-                min={ 10 }
-                max={ 100 }
-                step={ 0.01 }
-                value={ num }
-                pattern="[0-9]*"
-                onChangeCallback={ setNum }
-            />
-
-            <InputNumber
-                removeRegex={ /[^\-0-9.]*/ig }
-            />
-        </>
+        <InputNumber
+            min={ 10 }
+            max={ 100 }
+            step={ 0.01 }
+            value={ num }
+            onChangeCallback={ setNum }
+            removeRegex={ /[^\-0-9.]*/ig }
+        />
     );
 };
 
