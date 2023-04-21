@@ -1,5 +1,9 @@
 # React Input Number ✎﹏﹏﹏﹏
 
+![GitHub package.json version](https://img.shields.io/github/package-json/v/mzusin/mz-react-input-number)
+[![npm](https://img.shields.io/npm/dw/mz-react-input-number)](https://www.npmjs.com/package/mz-react-input-number)
+[![NPM](https://img.shields.io/badge/npm-input_number-brightgreen)](https://www.npmjs.com/package/mz-react-input-number)
+
 This library is a React component that provides a user-friendly interface for entering numerical values. It accepts various props that can be used to customize its behavior and appearance.
 
 ![React Input Number](https://github.com/mzusin/mz-react-input-number/blob/main/img/preview.gif?raw=true)
