@@ -71,6 +71,16 @@ export const InputNumber = (props: IInputNumber) => {
         sendOnChangeEventToUser(value);
     };
 
+    const getValInBoundaries = (num: number) => {
+
+        let val = isNaN(num) ? 0 : num;
+
+        val = Math.max(val, getMin());
+        val = Math.min(val, getMax());
+
+        return val;
+    };
+
     // ------------------------ INIT -------------------------
 
     const [ text, setText] = useState(validate(value));
@@ -189,11 +199,15 @@ export const InputNumber = (props: IInputNumber) => {
             }
 
             case EUpdateType.UP: {
-                return isNaN(parsed) ? NaN : setDecimalPlaces(Math.min(getMax(), parsed + getStep()), getDecimalPlaces());
+                const val = getValInBoundaries(parsed);
+                const valWithStep = getValInBoundaries(val + getStep());
+                return setDecimalPlaces(valWithStep, getDecimalPlaces());
             }
 
             case EUpdateType.DOWN: {
-                return isNaN(parsed) ? NaN : setDecimalPlaces(Math.max(getMin(), parsed - getStep()), getDecimalPlaces());
+                const val = getValInBoundaries(parsed);
+                const valWithStep = getValInBoundaries(val - getStep());
+                return setDecimalPlaces(valWithStep, getDecimalPlaces());
             }
         }
 

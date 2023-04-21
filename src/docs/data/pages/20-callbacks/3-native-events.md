@@ -1,8 +1,8 @@
-import * as React from 'react';
-import ReactDOM from 'react-dom/client';
-import { InputNumber } from '../core/ui/InputNumber';
-import { useState } from 'react';
+# Native Events
 
+The component accepts all standard input events like **onClick**, **onFocus**, etc. (along with standard HTML input properties like  disabled, autocomplete, etc.):
+
+```ts
 const App = () => {
 
     const [num, setNum] = useState<number|undefined>();
@@ -25,18 +25,4 @@ const App = () => {
         />
     );
 };
-
-const init = () => {
-    const $root =  document.getElementById('root') as HTMLElement;
-    if(!$root) return;
-
-    const root = ReactDOM.createRoot($root);
-    root.render(
-        <React.StrictMode>
-            <App />
-        </React.StrictMode>
-    );
-};
-
-init();
-
+```

@@ -30,11 +30,14 @@ This library is a React component that provides a user-friendly interface for en
 ### Callbacks 
 - [onChangeCallback()](https://react-input-number.mzsoft.org/pages/onChangeCallback.html)
 - [onKeyDownCallback()](https://react-input-number.mzsoft.org/pages/onKeyDownCallback.html)
+- [Native Events](https://react-input-number.mzsoft.org/pages/native-events.html)
 ### Other 
 - [Typescript Interfaces](https://react-input-number.mzsoft.org/pages/typescript-interfaces.html)
 - [Decimal Places](https://react-input-number.mzsoft.org/pages/decimal-places.html)
 - [Remove Regex](https://react-input-number.mzsoft.org/pages/remove-regex.html)
 ------------------------------
+
+
 
 
 

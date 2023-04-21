@@ -35,5 +35,26 @@ const App = () => {
 ``` 
 
 > All props are **optional**.
+ 
+ 
+You can also start with empty value:
+
+```ts
+import React, { useState } from 'react';
+import { InputNumber } from 'mz-react-input-number';
+
+const App = () => {
+
+    const [num, setNum] = useState<number|undefined>();
+
+    return (
+       <InputNumber
+            value={ num }
+            onChangeCallback={ setNum }
+       />
+    );
+};
+```
+
 
 

@@ -3,6 +3,7 @@ https://react-input-number.mzsoft.org/pages/basic-usage.html
 https://react-input-number.mzsoft.org/pages/classes-and-styles.html
 https://react-input-number.mzsoft.org/pages/onChangeCallback.html
 https://react-input-number.mzsoft.org/pages/onKeyDownCallback.html
+https://react-input-number.mzsoft.org/pages/native-events.html
 https://react-input-number.mzsoft.org/pages/typescript-interfaces.html
 https://react-input-number.mzsoft.org/pages/decimal-places.html
 https://react-input-number.mzsoft.org/pages/remove-regex.html

@@ -17,8 +17,8 @@
   <link id="favicon-16" rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16.png" />
 
   <link rel="stylesheet" href="/highlight.js/styles/tokyo-night-dark.css" />
-  <link rel="stylesheet" href="/css/styles.1682065907292.css" />
-  <!--<link rel="stylesheet" href="/js/index.1682065907292.css" />-->
+  <link rel="stylesheet" href="/css/styles.1682068008534.css" />
+  <!--<link rel="stylesheet" href="/js/index.1682068008534.css" />-->
 
 </head>
 <body class="h-screen flex flex-col font-roboto bg-white dark:bg-slate-900 dark:text-slate-100">
@@ -111,7 +111,7 @@
           <path d="m7 7 5 5-5 5m6-10 5 5-5 5"/>
         </svg>
 
-    </div><div class="flex flex-col" data-links><a href="/pages/onChangeCallback.html" title="" class="pl-3 border-l border-slate-150 dark:border-slate-600 pb-2 text-slate-500">onChangeCallback()</a><a href="/pages/onKeyDownCallback.html" title="" class="pl-3 border-l border-slate-150 dark:border-slate-600  text-slate-500">onKeyDownCallback()</a></div><div class="text-xl my-4 flex items-center cursor-pointer" data-collapsible-title data-opened="true" data-id="100-other">
+    </div><div class="flex flex-col" data-links><a href="/pages/onChangeCallback.html" title="" class="pl-3 border-l border-slate-150 dark:border-slate-600 pb-2 text-slate-500">onChangeCallback()</a><a href="/pages/onKeyDownCallback.html" title="" class="pl-3 border-l border-slate-150 dark:border-slate-600 pb-2 text-slate-500">onKeyDownCallback()</a><a href="/pages/native-events.html" title="" class="pl-3 border-l border-slate-150 dark:border-slate-600  text-slate-500">Native Events</a></div><div class="text-xl my-4 flex items-center cursor-pointer" data-collapsible-title data-opened="true" data-id="100-other">
         Other 
         <svg data-arrow xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="#626e7f" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="ml-2 rotate-90" viewBox="0 0 24 24">
           <path stroke="none" d="M0 0h24v24H0z"/>
@@ -149,6 +149,21 @@
 <blockquote class="bg-gray-100 pt-4 px-4 flex my-10 border-l-4 border-blue-300 rounded dark:bg-sky-900">
 <p class="mb-4">All props are <strong class="font-bold">optional</strong>.</p>
 </blockquote>
+<p class="mb-4">You can also start with empty value:</p>
+<pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code><span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span>, { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">InputNumber</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;mz-react-input-number&#x27;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">App</span> = (<span class="hljs-params"></span>) =&gt; {
+
+    <span class="hljs-keyword">const</span> [num, setNum] = useState&lt;<span class="hljs-built_in">number</span>|<span class="hljs-literal">undefined</span>&gt;();
+
+    <span class="hljs-keyword">return</span> (
+       <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">InputNumber</span>
+            <span class="hljs-attr">value</span>=<span class="hljs-string">{</span> <span class="hljs-attr">num</span> }
+            <span class="hljs-attr">onChangeCallback</span>=<span class="hljs-string">{</span> <span class="hljs-attr">setNum</span> }
+       /&gt;</span></span>
+    );
+};</code></pre>
 </div>
 
       <div class="w-800 max-w-full mx-auto grid  gap-8 items-center text-slate-500">
@@ -178,6 +193,6 @@
   </div>
 </footer>-->
 
-<script src="/js/index.1682065907292.js"></script>
+<script src="/js/index.1682068008534.js"></script>
 </body>
 </html>

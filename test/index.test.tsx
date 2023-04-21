@@ -230,7 +230,7 @@ describe('Input Number', () => {
             expect($input.value).toStrictEqual('10.123456');
         });
 
-        test('Arrow up when there is no value', () => {
+        test('Arrow up when there is no value ---> add one step', () => {
 
             const { container} = render(
                 <InputNumber />
@@ -241,7 +241,7 @@ describe('Input Number', () => {
                 key: 'ArrowUp',
             });
 
-            expect($input.value).toStrictEqual('');
+            expect($input.value).toStrictEqual('1');
         });
 
         test('Arrow up with negative step', () => {
@@ -259,6 +259,71 @@ describe('Input Number', () => {
             });
 
             expect($input.value).toStrictEqual('9.9');
+        });
+
+        test('Arrow up when no value, but max = -1', () => {
+
+            const { container} = render(
+                <InputNumber
+                    max={ -1 }
+                />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            fireEvent.keyDown($input, {
+                key: 'ArrowUp',
+            });
+
+            expect($input.value).toStrictEqual('-1');
+        });
+
+        test('Arrow up when no value, and max = 100', () => {
+
+            const { container} = render(
+                <InputNumber
+                    max={ 100 }
+                />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            fireEvent.keyDown($input, {
+                key: 'ArrowUp',
+            });
+
+            expect($input.value).toStrictEqual('1');
+        });
+
+        test('Arrow up when no value, min = 10 and max = 100', () => {
+
+            const { container} = render(
+                <InputNumber
+                    min={ 10 }
+                    max={ 100 }
+                />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            fireEvent.keyDown($input, {
+                key: 'ArrowUp',
+            });
+
+            expect($input.value).toStrictEqual('11');
+        });
+
+        test('Arrow down when no value, but max is provided', () => {
+
+            const { container} = render(
+                <InputNumber
+                    min={ 10 }
+                />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            fireEvent.keyDown($input, {
+                key: 'ArrowDown',
+            });
+
+            expect($input.value).toStrictEqual('10');
         });
     });
 
@@ -383,7 +448,7 @@ describe('Input Number', () => {
             expect($input.value).toStrictEqual('99.876544');
         });
 
-        test('Arrow down when there is no value', () => {
+        test('Arrow down when there is no value ---> remove one step', () => {
 
             const { container} = render(
                 <InputNumber />
@@ -394,7 +459,7 @@ describe('Input Number', () => {
                 key: 'ArrowDown',
             });
 
-            expect($input.value).toStrictEqual('');
+            expect($input.value).toStrictEqual('-1');
         });
 
         test('Arrow down with negative step', () => {
@@ -412,6 +477,30 @@ describe('Input Number', () => {
             });
 
             expect($input.value).toStrictEqual('10.1');
+        });
+
+        test('When there is not value: arrow up and then down', () => {
+
+            const { container} = render(
+                <InputNumber />
+            );
+            const $input = container.querySelector('input') as HTMLInputElement;
+
+            fireEvent.keyDown($input, {
+                key: 'ArrowUp',
+            });
+            fireEvent.keyDown($input, {
+                key: 'ArrowUp',
+            });
+            fireEvent.keyDown($input, {
+                key: 'ArrowUp',
+            });
+
+            fireEvent.keyDown($input, {
+                key: 'ArrowDown',
+            });
+
+            expect($input.value).toStrictEqual('2');
         });
     });
 
@@ -976,7 +1065,7 @@ describe('Input Number', () => {
             expect($input.value).toStrictEqual('9');
         });
 
-        test('MouseWheel up on empty value ---> should not change it', () => {
+        test('MouseWheel up on empty value ---> add one step', () => {
 
             const { container} = render(
                 <InputNumber />
@@ -987,10 +1076,10 @@ describe('Input Number', () => {
                 deltaY: -1, // go up
             });
 
-            expect($input.value).toStrictEqual('');
+            expect($input.value).toStrictEqual('1');
         });
 
-        test('MouseWheel down on empty value ---> should not change it', () => {
+        test('MouseWheel down on empty value ---> remove one step', () => {
 
             const { container} = render(
                 <InputNumber />
@@ -1001,7 +1090,7 @@ describe('Input Number', () => {
                 deltaY: 1, // go down
             });
 
-            expect($input.value).toStrictEqual('');
+            expect($input.value).toStrictEqual('-1');
         });
 
     });
