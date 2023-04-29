@@ -13,6 +13,7 @@ export const settings = {
     entryPoints: ['./src/core/index.ts'],
     bundle: true,
     sourcemap: 'linked', // external
+    define: { 'process.env.NODE_ENV': `'production'` }, // dev, production
     minify: true,
     target: ['es6'],
     outfile: './dist/mz-react-input-number.min.js',

@@ -9,6 +9,7 @@ if(watch){
     // ------------- watch ---------------
     (async () => {
         settings.plugins.push(esbuildWatchPlugin);
+        settings.define = { 'process.env.NODE_ENV': `'dev'` }; // dev, production
         const ctx = await esbuild.context(settings);
         await ctx.watch();
         console.log('Watching...');
