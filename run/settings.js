@@ -19,12 +19,10 @@ export const settings = {
     plugins: [],
     banner: {
         js: `/* 
-MZ React Input Number
-Version: ${version}
-Author: Miriam Zusin     
-Contact: miriam.zusin@gmail.com
-Documentation: https://github.com/mzusin/mz-react-input-number
-MIT License               
+MZ React Input Number v${ version }
+https://github.com/mzusin/mz-react-input-number
+MIT License      
+Copyright (c) 2023-present, Miriam Zusin          
 */`,
     },
 };
