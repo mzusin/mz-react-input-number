@@ -1,4 +1,4 @@
-import { useState, useEffect, ChangeEvent, KeyboardEvent, useRef, WheelEvent } from 'react';
+import { useState, useEffect, ChangeEvent, KeyboardEvent, useRef, WheelEvent, useCallback } from 'react';
 import { parseNumber } from '../domain/parse-provider';
 import { EUpdateType, IInputNumber } from '../interfaces';
 import { setDecimalPlaces } from 'mz-math';
@@ -18,26 +18,26 @@ export const InputNumber = (props: IInputNumber) => {
 
     // ------------------------ HELPERS -------------------------
 
-    const getMin = () => {
+    const getMin = useCallback(() => {
         const _min = parseNumber(min);
         return isNaN(_min) ? -Infinity : _min;
-    };
+    }, [min]);
 
-    const getMax = () => {
+    const getMax = useCallback(() => {
         const _max = parseNumber(max);
         return isNaN(_max) ? Infinity : _max;
-    };
+    }, [max]);
 
     const getStep = () => {
         const _step = parseNumber(step);
         return isNaN(_step) ? 1 : _step;
     };
 
-    const getDecimalPlaces = () => {
+    const getDecimalPlaces = useCallback(() => {
         return decimalPlaces === undefined ? DEFAULT_DECIMAL_PLACES : decimalPlaces;
-    };
+    }, [decimalPlaces]);
 
-    const validate = (num?: string|number) => {
+    const validate = useCallback((num?: string|number) => {
         let formatted = num?.toString() || '';
         if(removeRegex){
             formatted = formatted.replace(removeRegex, '');
@@ -46,7 +46,7 @@ export const InputNumber = (props: IInputNumber) => {
         const parsed = parseNumber(formatted);
         const val = Math.min(Math.max(getMin(), parsed), getMax());
         return isNaN(parsed) ? '' : setDecimalPlaces(val, getDecimalPlaces()).toString();
-    };
+    }, [getDecimalPlaces, getMax, getMin, removeRegex]);
 
     const moveCursorToStart = () => {
         inputRef.current?.setSelectionRange(0, 0);
@@ -91,7 +91,7 @@ export const InputNumber = (props: IInputNumber) => {
         if(document.activeElement === inputRef.current) return;
 
         setText(validate(value));
-    }, [value]);
+    }, [value, validate]);
 
     // ------------------------ EVENTS -------------------------
 

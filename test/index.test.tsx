@@ -1095,7 +1095,7 @@ describe('Input Number', () => {
 
     });
 
-    describe('Other inout attributes', () => {
+    describe('Other input attributes', () => {
 
         test('Disabled', () => {
 
